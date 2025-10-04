@@ -1,16 +1,18 @@
-#def product(a,b):
-    #"""Унижает числа
-    #>>> product(2,3)
-    #6
-    #>>> product(4,3)
-    #3
-    #"""
-    #return a+b
+import telebot
+
+bot = telebot.TeleBot('8294305929:AAHd8_K15fV33u6E2klTJsjSXJHgCQ0fu1w')
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    user_id = message.from_user.id
+
+    bot.send_message(user_id, 'привет')
 
 
-import unittest
+@bot.message_handler(commands=['help!'])
+def start(message):
+    user_id = message.from_user.id
 
+    bot.send_message(user_id, 'Помогите')
 
-class TestoName(unittest.TestCase):
-    def test_speed_up(self):
-        
+bot.polling(none_stop=True)
